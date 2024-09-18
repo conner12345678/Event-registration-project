@@ -3,31 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include("../partials/head.ejs") %>
-    <title>Events</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Task Manager</title>
 </head>
-<body className="container">
-    <header>
-        <%- include("../partials/header.ejs", {variant: 'compact'}); %>
-    </header>
-    <main>
-        <div className="jumbotron">
-            <ul>
-                <% events.forEach(function(event){ %>
-                    <li>
-                        <strong><%= event.event %></strong><br>
-                        <em>Date</em>: <%= event.dayOne+"-"+event.dayTwo %><br>
-                        <em>State</em>: <%= event.location %><br>
-                        <em>Address</em>: <%= event.address %><br>
-                        
-                    </li>
-                <% }) %>
-            </ul>
-        </div>
-    </main>
-    <footer>
-        <%- include("../partials/footer.ejs", {variant: 'compact'}); %>
-    </footer>
-    <script></script>
+<body>
+    <h1>Event Manager</h1>
+    <div class="form">
+        <form action="/events" method="POST">
+            <fieldset>
+                <legend>Add New Event</legend>
+                <input type="text" name="event" placeholder="New event name" required>
+                <input type="date" name="dayOne" required>
+                <input type="date" name="dayTwo" required>
+                <input type="text" name="location" placeholder="Event location" required>
+                <input type="text" name="address" placeholder="street address">
+                <button type="submit">Add Task</button>
+            </fieldset>        
+        </form>
+    </div>
+    
+
+    <ul>
+        <% events.forEach(event => { %>
+            <li>
+                <div class="event">
+                    <div class="event-details">
+                        <h3 class="event-name"><%= event.event %></h3>
+                        <h5><%= event.dayOne %></h5>
+                        <h5><%= event.dayTwo %></h5>
+                        <p class="event-location"><%= event.location %></p>
+                        <p class="event-address"><%= event.address %></p>
+                    </div>
+                    <div class="task-buttons">
+                        <button class="edit-button"><a href="/events/<%= event.id %>/edit">Edit</a></button>
+                        <form action="/events/<%= event.id %>/delete" method="POST" style="display:inline;">
+                            <button class="delete-button" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
 </body>
 </html>
