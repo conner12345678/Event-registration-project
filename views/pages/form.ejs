@@ -3,44 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include("../partials/head.ejs") %>
-    <title>About</title>
-    <style>
-        body {padding-top: 50px;}
-        form {margin-top: 20px;}
-        label {display: block;}
-        input[type="text"], select {margin-bottom: 10px;}
-        select {width: 100%;}
-        footer {margin-top: 20px;}
-        @media (max-width: 768px) {
-            body {padding-top: 0;}
-            form {margin-top: 0;}
-        }
-    </style>
+    <link rel="stylesheet" href="../../event.css">
+    <title>Edit Event</title>
 </head>
 <body>
-    <header>
-        <%- include("../partials/header.ejs", {variant: 'compact'}); %>
-    </header>
-    <main>
-        <form>
-            <label for="theEvents">Choose an event:</label>
-            <select name="theEvents" id="theEvents">
-                <% events.forEach(function(event) { %>
-                    <option value="<%= event.event %>"><%= event.event+' : '+event.location+' '+event.address+'('+event.dayOne+'-'+event.dayTwo+')' %></option>
-                <% }) %>
-            </select>
-            <label for="fName">First name:</label>
-            <input type="text" id="fName" name="fName">
-            <label for="lName">Last name:</label>
-            <input type="text" id="lName" name="lName">
-            <input type="submit" value="Submit" onclick="nameAdd()">
-        </form>
-    </main>
-    <footer>
-        <%- include("../partials/footer.ejs", {variant: 'compact'}); %>
-    </footer>
-    <script>
-    </script>
+    <h1>Edit Event</h1>
+    <form action="/events/<%= event.id %>" method="POST">
+        <p name="event"><%= event.event %></p>
+        <p name="dayOne"><%= event.dayOne %>-<%= event.dayTwo %></p>
+        <p name="location"><%= event.location %></p>
+        <p name="address"><%= event.address %></p>
+        <textarea cols="40" rows="10" name="names" required><%= event.names %></textarea>
+        <button type="submit">Update Event</button>
+    </form>
+    <a href="/">Back to list</a>
+    <button type="button" class="back"><a href="/">Back to list</a></button>
 </body>
 </html>
