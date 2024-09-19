@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editer</title>
+    <!-- <link rel="stylesheet" href="../public/event.css"> -->
+     
+</head>
+<body>
+    <div class="form">
+        <form action="/events" method="POST">
+            <fieldset>
+                <legend>Add New Event</legend>
+                <input type="text" name="event" placeholder="New event name" required>
+                <input type="date" name="dayOne" required>
+                <input type="date" name="dayTwo" required>
+                <input type="text" name="location" placeholder="Event location" required>
+                <input type="text" name="address" placeholder="street address">
+                <button type="submit">Add Task</button>
+            </fieldset>        
+        </form>
+        </div>
+    </div>
+</body>
+</html>

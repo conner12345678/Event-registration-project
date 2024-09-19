@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/form.css">
+    <title>Edit Event</title>
+</head>
+<body>
+    <h1>Edit Event</h1>
+    <form action="/events/<%= event.id %>" method="POST">
+        <input type="text" name="event" value="<%= event.event %>" style="border:0px solid;" readonly>
+        <input type="text" name="dayOne" value="<%= event.dayOne %>-<%= event.dayTwo %>" style="border:0px solid;" readonly><br>
+        <input type="text" name="location" value="<%= event.location %>" style="border:0px solid;" readonly>
+        <input type="text" name="address" value="<%= event.address %>" style="border:0px solid;" readonly><br>
+        <fieldset>
+            <legend>Enter name here</legend>
+            <textarea cols="40" rows="10" name="names" required><%= event.names %></textarea><br>
+        </fieldset>
+        <button type="submit">Update Event</button><br>
+    </form>
+    <button type="button" class="back"><a href="/">Back to list</a></button>
+</body>
+</html>

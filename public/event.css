@@ -1,0 +1,25 @@
+body{
+    background-image: linear-gradient(to left, navy 10%, white 90%);
+    text-align: center;
+}
+ul{
+    background-image: linear-gradient(to left, lightblue 10%, white 90%);
+    margin: auto;
+    margin-bottom: 2%;
+    list-style-type: none;
+    width: 40%;
+    padding: 2%;
+    border-radius: 30px;
+}
+ul button{
+    background-color: navajowhite;
+}
+ul button a:visited{
+    color: blue;
+}
+ul button a:link{
+    color: blue;
+}
+ul button a:hover{
+    color: navy;
+}

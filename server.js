@@ -20,21 +20,45 @@ const saveEvents = (events) => {
 
 app.get('/', (req,res) => {
   const events = getEvents()
-  res.render('pages/index', { events })
+  res.render('index', { events })
 })
 
 
 app.get('/events', (req,res) => {
   const events = getEvents()
+  res.redirect('/')
+})
+
+app.get('/events/editor', (req,res) => {
+  res.render('add')
+})
+
+app.post('/events',(req,res) => {
+  const events = getEvents()
   const newEvent = {
-    id: events.length+1,
-    event:req.body.event,
-    dayOne:req.body.dayOne,
-    dayTwo:req.body.dayTwo,
-    location:req.body.location,
-    address:req.body.address
+    id: events.length + 1,
+    event: req.body.event,
+    dayOne: req.body.dayOne,
+    dayTwo: req.body.dayTwo,
+    location: req.body.location,
+    address: req.body.address,
+    names: req.body.names
   }
   events.push(newEvent)
+  saveEvents(events)
+  res.redirect('/')
+})
+
+app.get('/events/:id/deletor', (req,res) => {
+  const events = getEvents()
+  const event = events.find(event => event.id == req.params.id)
+  res.render('delete', { event })
+})
+
+app.post('/events/:id', (req,res) => {
+  const events = getEvents()
+  const eventIndex = events.findIndex(event => event.id == req.params.id)
+  events.splice(eventIndex, 1)
   saveEvents(events)
   res.redirect('/')
 })
@@ -42,16 +66,16 @@ app.get('/events', (req,res) => {
 app.get('/events/:id/edit', (req,res) => {
   const events = getEvents()
   const event = events.find(event => event.id == req.params.id)
-  res.render('pages/form', { event })
+  res.render('form', { event })
 })
 
 app.post('/events/:id', (req,res) => {
   const events = getEvents()
   const eventIndex = events.findIndex(event => event.id == req.params.id)
-  events[eventIndex].event = req.body.event
-  events[eventIndex].dayOne = req.body.dayOne
-  events[eventIndex].location = req.body.location
-  events[eventIndex].address = req.body.address
+  events[eventIndex].event = req.body.event.innerHTML
+  events[eventIndex].dayOne = req.body.dayOne.innerHTML
+  events[eventIndex].location = req.body.location.innerHTML
+  events[eventIndex].address = req.body.address.innerHTML
   events[eventIndex].names = req.body.names
   saveEvents(events)
   res.redirect('/')

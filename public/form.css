@@ -1,0 +1,26 @@
+body{
+    background-image: linear-gradient(to left, navy 10%, white 90%);
+    text-align: center;
+}
+form input{
+    background-color: rgba(240, 248, 255, 0);
+}
+button{
+    background-color: navajowhite;
+}
+button a:hover{
+    color: navy;
+}
+button a:link{
+    color: blue;
+}
+button a:visited{
+    color: blue;
+}
+form fieldset textarea{
+    background-color: dimgray;
+    color: white;
+}
+form fieldset{
+    margin: 2%;
+}
