@@ -1,0 +1,11 @@
+body{
+    background-image: linear-gradient(to left, navy 10%, white 90%);
+    text-align: center;
+}
+div form fieldset input{
+    background-color: dimgray;
+    color: white;
+}
+div form fieldset button{
+    background-color: navajowhite;
+}

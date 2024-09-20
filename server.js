@@ -55,7 +55,7 @@ app.get('/events/:id/deletor', (req,res) => {
   res.render('delete', { event })
 })
 
-app.post('/events/:id', (req,res) => {
+app.post('/events/:id/delete', (req,res) => {
   const events = getEvents()
   const eventIndex = events.findIndex(event => event.id == req.params.id)
   events.splice(eventIndex, 1)
@@ -72,11 +72,11 @@ app.get('/events/:id/edit', (req,res) => {
 app.post('/events/:id', (req,res) => {
   const events = getEvents()
   const eventIndex = events.findIndex(event => event.id == req.params.id)
-  events[eventIndex].event = req.body.event.innerHTML
-  events[eventIndex].dayOne = req.body.dayOne.innerHTML
-  events[eventIndex].location = req.body.location.innerHTML
-  events[eventIndex].address = req.body.address.innerHTML
-  events[eventIndex].names = req.body.names
+  events[eventIndex].event = req.body.event
+  events[eventIndex].dayOne = req.body.dayOne
+  events[eventIndex].location = req.body.location
+  events[eventIndex].address = req.body.address
+  events[eventIndex].names += req.body.names+", "
   saveEvents(events)
   res.redirect('/')
 })

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>deletor</title>
+    <link rel="stylesheet" href="/deletor.css">
 </head>
 <body>
     <form action="/events/<%= event.id %>" method="POST">
@@ -11,8 +12,6 @@
         <input type="text" name="dayOne" value="<%= event.dayOne %>-<%= event.dayTwo %>" style="border:0px solid;" readonly><br>
         <input type="text" name="location" value="<%= event.location %>" style="border:0px solid;" readonly>
         <input type="text" name="address" value="<%= event.address %>" style="border:0px solid;" readonly><br>
-        <input type="text" name="names" value="<%= event.names %>" style="border:0px solid" readonly>
-        <button type="submit">Update Event</button><br>
     </form>
 
     <div class="task-buttons">
